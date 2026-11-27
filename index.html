@@ -102,6 +102,15 @@ h4{font-family:var(--hand);font-size:20px;margin:18px 0 6px}
 @media (max-width:900px){#tools{max-width:300px}#where{max-width:calc(100vw - 330px)}}
 @media (max-width:640px){#mini{width:96px;height:96px}#tools{max-width:190px;gap:6px}#where{max-width:calc(100vw - 215px)}#tools button{padding:5px 9px;font-size:15px}#jlist{grid-template-columns:1fr}.thumb{width:104px;height:70px}#sthumb{width:108px;height:72px}}
 @media (max-height:520px){#mini{width:92px;height:92px}#stamp{max-width:calc(100vw - 240px);padding:8px 12px}#sthumb{width:96px;height:64px}#toast{bottom:calc(12px + env(safe-area-inset-bottom));font-size:14px}#prompt{bottom:calc(58px + env(safe-area-inset-bottom))}}
+#rot{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--paper);z-index:60;padding:24px;text-align:center;pointer-events:auto}
+#rot.on{display:flex}
+#rotI{width:52px;height:90px;border:3px solid var(--ink);border-radius:12px;margin-bottom:10px;animation:rotI 2.6s ease-in-out infinite}
+@keyframes rotI{0%,20%{transform:rotate(0)}55%,100%{transform:rotate(-90deg)}}
+#rotT{font-family:var(--hand);font-size:30px;line-height:1.1}
+#rotK{font-size:14px;color:#6b5a4e}
+#rotS{font-size:15px;line-height:1.4;max-width:290px}
+#rotB{padding:7px 18px 8px;font-family:var(--hand);font-size:17px;margin-top:6px}
+@media (max-height:520px){#title{padding:8px 20px}#title h1{font-size:38px}#title h2{font-size:16px;margin-top:.1em}#title .ka{font-size:14px;margin-top:.15em}#title p{max-width:46em;margin-top:.45em;font-size:13px;line-height:1.35}#start{margin-top:.5em;padding:.3em 1.3em;font-size:20px}#loadmsg{height:1.2em;margin-top:.2em;font-size:13px}#credit{margin-top:.3em;font-size:11px;line-height:1.3}}
 </style>
 </head>
 <body>
@@ -136,6 +145,7 @@ h4{font-family:var(--hand);font-size:20px;margin:18px 0 6px}
   <div class="scroll"><input id="chIn" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" placeholder="· · · · · ·"><table id="chT"></table></div></div></div>
 <div id="help" class="panel"><div class="book" style="max-width:560px"><button class="close">✕</button>
   <header><h2 id="helpH2">How to walk</h2></header><div class="scroll"><table id="helpT"></table><p id="helpP" style="font-size:14.5px;line-height:1.5"></p></div></div></div>
+<div id="rot"><div id="rotI"></div><div id="rotT">Turn your phone sideways</div><div id="rotK"></div><div id="rotS"></div><button id="rotB" class="ink">Play upright anyway</button></div>
 <div id="title"><div>
   <h1 id="tH1">Old Tbilisi</h1>
   <div class="ka" id="tKa">ძველი თბილისი</div>
@@ -1242,6 +1252,7 @@ en: {
 title: 'Old Tbilisi', sub: 'a walking sketchbook', other: 'ქართული',
 intro: 'A morning in Freedom Square. Walk down Kote Abkhazi Street to Meidan, then wherever the streets take you: the sulphur baths, Sioni, the mosque, the Bridge of Peace, Metekhi, and up to Narikala.',
 begin: 'Begin the walk', opening: 'Opening the sketchbook…',
+rotT: 'Turn your phone sideways', rotS: 'This walk is drawn for a wide screen.', rotB: 'Play upright anyway',
 credit: 'Streets, buildings and landmarks: map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, ODbL.<br>Terrain: NASA SRTM 30 m. Everything on screen is drawn by shaders from that data.',
 cheats: 'Cheats', cheatH: 'Cheat codes', cheatSub: 'Press C, type a code, or tap a row. Nothing here is saved.', on: 'ON', off: 'off', cheatMsg: 'Cheat: ', tpHint: 'TELEPORT is on: click anywhere on the map to land there.', landed: 'Landed.',
 cheatD: { TELEPORT: 'Open the map and click anywhere to land there', FLASH: 'Walk four times faster', GHOST: 'Walk through walls and across water', EAGLE: "Bird's-eye view of the whole old town", ATLAS: 'Show every place, cat, dog and townsperson on the map', FREEZE: 'Stop the clock',
@@ -1266,6 +1277,7 @@ ka: {
 title: 'ძველი თბილისი', sub: 'სასეირნო ჩანახატების რვეული', other: 'English',
 intro: 'დილა თავისუფლების მოედანზე. ჩაუყევი კოტე აფხაზის ქუჩას მეიდანამდე, შემდეგ კი — საითაც ქუჩები წაგიყვანს: გოგირდის აბანოები, სიონი, მეჩეთი, მშვიდობის ხიდი, მეტეხი და ნარიყალა.',
 begin: 'სეირნობის დაწყება', opening: 'რვეული იხსნება…',
+rotT: 'ტელეფონი ჰორიზონტალურად დაიჭირე', rotS: 'ეს გასეირნება ფართო ეკრანისთვისაა დახატული.', rotB: 'ასე გავაგრძელებ',
 credit: 'ქუჩები, შენობები და ღირსშესანიშნაობები: რუკის მონაცემები © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap-ის მონაწილეები</a>, ODbL.<br>რელიეფი: NASA SRTM 30 მ. ეკრანზე ყველაფერი ამ მონაცემებიდან შეიდერებითაა დახატული.',
 cheats: 'კოდები', cheatH: 'ჩიტკოდები', cheatSub: 'დააჭირე C-ს, აკრიფე კოდი ან შეეხე სტრიქონს. აქედან არაფერი ინახება.', on: 'ჩართ.', off: 'გამორთ.', cheatMsg: 'კოდი: ', tpHint: 'TELEPORT ჩართულია: დააწკაპუნე რუკაზე ნებისმიერ ადგილას და იქ აღმოჩნდები.', landed: 'ადგილზე ხარ.',
 cheatD: { TELEPORT: 'გახსენი რუკა და დააწკაპუნე ნებისმიერ ადგილას — იქ აღმოჩნდები', FLASH: 'ოთხჯერ სწრაფი სიარული', GHOST: 'კედლებში და წყალზე გავლა', EAGLE: 'მთელი ძველი ქალაქი ჩიტის თვალთახედვით', ATLAS: 'რუკაზე ყველა ადგილის, კატის, ძაღლისა და ქალაქელის ჩვენება', FREEZE: 'საათის გაჩერება',
@@ -1823,7 +1835,7 @@ async function startGame(W, world) {
   // ---------------------------------------------------------------- language
   function applyLang() { document.documentElement.lang = LANG; const set = (id, k, html) => { const el = $(id); if (el) el[html ? 'innerHTML' : 'textContent'] = tr(k); };
     set('tH1', 'title'); set('tH2', 'sub'); set('tIntro', 'intro'); set('tCredit', 'credit', 1); set('btnT', 'hours'); set('lblJ', 'journal'); set('btnM', 'map'); set('jH2', 'sketchbook'); set('jErrH', 'errands'); set('mapCr', 'mapcr');
-    set('helpH2', 'how'); set('helpP', 'helpP'); set('stampS', 'sketched'); set('stampHint', 'look'); set('gsmall', 'sketched'); set('gback', 'back'); set('act', 'go'); set('btnL', 'other'); set('tLang', 'other'); set('btnC', 'cheats'); set('chH2', 'cheatH'); set('chSub', 'cheatSub'); refreshCheats();
+    set('helpH2', 'how'); set('helpP', 'helpP'); set('stampS', 'sketched'); set('stampHint', 'look'); set('gsmall', 'sketched'); set('gback', 'back'); set('act', 'go'); set('btnL', 'other'); set('tLang', 'other'); set('btnC', 'cheats'); set('chH2', 'cheatH'); set('chSub', 'cheatSub'); set('rotT', 'rotT'); set('rotS', 'rotS'); set('rotB', 'rotB'); $('rotK').textContent = STR[LANG === 'ka' ? 'en' : 'ka'].rotT; refreshCheats();
     $('tKa').textContent = LANG === 'ka' ? 'Old Tbilisi' : 'ძველი თბილისი';
     $('helpT').innerHTML = tr('help').map((r) => '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>').join('');
     const b = $('start'); if (!b.disabled) b.textContent = tr('begin'); else b.textContent = tr('opening');
@@ -1842,6 +1854,10 @@ async function startGame(W, world) {
   try {
     const tick = (m) => { const k = m.replace(/ \d+ /, ' '); $('loadmsg').textContent = (STR[LANG].ticks[m] || STR[LANG].ticks[k] || m) + '…'; return new Promise((r) => setTimeout(r, 30)); };
     $('tIntro').textContent = tr('intro'); $('tH1').textContent = tr('title'); $('tH2').textContent = tr('sub'); $('start').textContent = tr('opening'); $('tLang').textContent = tr('other'); $('tCredit').innerHTML = tr('credit');
+    const rotQ = matchMedia('(pointer:coarse) and (orientation:portrait) and (max-width:600px)'); let rotOk = false;
+    const rotSync = () => $('rot').classList.toggle('on', rotQ.matches && !rotOk);
+    $('rotT').textContent = tr('rotT'); $('rotS').textContent = tr('rotS'); $('rotB').textContent = tr('rotB'); $('rotK').textContent = STR[LANG === 'ka' ? 'en' : 'ka'].rotT;
+    $('rotB').onclick = () => { rotOk = true; rotSync(); }; rotQ.addEventListener('change', rotSync); rotSync();
     await tick('Unrolling the map');
     const bin = Uint8Array.from(atob(DATA), (c) => c.charCodeAt(0));
     const raw = new Uint8Array(await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer());
